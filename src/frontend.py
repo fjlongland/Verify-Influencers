@@ -3,6 +3,7 @@ from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import Qt, QThread, pyqtSignal
 from .calls import about_influencer_call
 import threading
+import json
 
 
 class InfoFetcherThread(QThread):
@@ -145,4 +146,24 @@ class SecondWindow(QWidget):
         self.thread.start()
 
     def update_info_display(self, info):
-        self.txtAbout.setText(info)
+        
+        try:
+            data = json.loads(info)
+
+            feildstr = ""
+
+            for field in data['fields']:
+                feildstr += f"{field}     "
+
+            aboutstr = feildstr + "\n\n" + data['summary']
+            
+            self.txtAbout.setText(aboutstr)
+            self.txtTrustscore.setText(data['reliability_score'])
+            self.txtYearlyRev.setText(data['yearly_revenue'])
+            self.txtProducts.setText(data['products_released']['total'])
+            self.txtFollowers.setText(data['online_followers']['total'])
+
+        except json.JSONDecodeError:
+            self.txtAbout.setText("Error: invalid JSON data recieved.")
+        except KeyError as e:
+            self.txtAbout.setText(f"Error: Missing key in jason data: {str(e)}")
