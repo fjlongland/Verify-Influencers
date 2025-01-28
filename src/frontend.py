@@ -96,10 +96,40 @@ class SecondWindow(QWidget):
 
         #///////////////////////////////////////////////////
 
+        self.lblTrustScore = QLabel("Trust Score:")
+
+        self.lblYearlyRev = QLabel("Yearly Revenue:")
+
+        self.lblProducts = QLabel("Products:")
+
+        self.lblFollowers = QLabel("Followers:")
+
+        #///////////////////////////////////////////////////
+
+        self.txtTrustscore = QTextEdit()
+
+        self.txtYearlyRev = QTextEdit()
+
+        self.txtProducts = QTextEdit()
+
+        self.txtFollowers = QTextEdit()
+
+        #///////////////////////////////////////////////////
+
         layout.addWidget(self.lblNameDisplay, 0, 0)
-        layout.addWidget(self.txtAbout, 1, 0)
+        layout.addWidget(self.txtAbout, 1, 0, 1, 4)
+        layout.addWidget(self.lblTrustScore, 2, 0)
+        layout.addWidget(self.lblYearlyRev, 2, 1)
+        layout.addWidget(self.lblProducts, 2, 2)
+        layout.addWidget(self.lblFollowers, 2, 3)
+        layout.addWidget(self.txtTrustscore, 3, 0)
+        layout.addWidget(self.txtYearlyRev, 3, 1)
+        layout.addWidget(self.txtProducts, 3, 2)
+        layout.addWidget(self.txtFollowers, 3, 3)
 
         #//////////////////////////////////////////////////
+
+        layout.setRowStretch(4, 1)
 
         self.setLayout(layout)
 

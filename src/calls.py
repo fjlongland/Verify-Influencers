@@ -47,14 +47,35 @@ def about_influencer_call(name):
         {
             "role": "system",
             "content": (
-                "You are an artificial intelligence assistant and you need to "
-                "engage in a helpful, detailed, polite conversation with a user."
+                "You are a detailed artificial intelegence and you will try harder to fill in all the information requested"
             ),
         },
         {
             "role": "user",
             "content": (
-                f"tell me what you know about {name} but put his notable information in a json format, focuses are: a breif one paragraph summary of the person, the feilds he has worked in, his yearly revenue, how many online followers he has, and how many products he has released. return only the json file"
+                f"Please provide information about {name} in a JSON format. Use the following structure and titles exactly: "
+                "{"
+                '"summary": "A brief one-paragraph summary of the person",'
+                '"fields": ["List of fields he has worked in"],'
+                '"yearly_revenue": "Estimated yearly revenue if available, or \'Not available\' if unknown",'
+                '"online_followers": {'
+                '    "total": "Total number of followers across all platforms",'
+                '    "platform_breakdown": {'
+                '        "Instagram": "Number of Instagram followers",'
+                '        "Twitter": "Number of Twitter followers",'
+                '        "YouTube": "Number of YouTube subscribers"'
+                '    }'
+                '},'
+                '"products_released": {'
+                '    "books": "Number of books published",'
+                '    "courses": "Number of online courses released",'
+                '    "podcasts": "Number of podcast series hosted"'
+                '    "total": "total number of products released"'
+                '},'
+                '"reliability_score": "A percentage based on his claims cross-referenced against trusted scientific journals"'
+                "} "
+                f"Return only the JSON file, populated with the relavant information about {name}. "
+                "If any information is not available, use an estimate as the value only for yearly revenue, in other cases you can user (not available)."
             ),
         },
     ]
