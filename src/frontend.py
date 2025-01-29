@@ -50,16 +50,26 @@ class MainWindow(QMainWindow):
         self.btnSearch.setFixedSize(150, 50)
         self.btnSearch.clicked.connect(lambda: self.search_clicked(self.txtIName.text()))
 
+        #///////////////////////////////////////////////////////////
+
+        self.txtLeaderboard = QTextEdit(self)
+        self.txtLeaderboard.setReadOnly(True)
+
+
+        self.lblLeaderboard = QLabel("Leaderboard:")
+
         #////////////////////spacing///////////////////////////
 
         layout.addWidget(self.lblName, 1, 1)
         layout.addWidget(self.txtIName, 1, 3)
         layout.addWidget(self.btnSearch, 5, 2)
+        layout.addWidget(self.txtLeaderboard, 7, 0, 7, 5)
+        layout.addWidget(self.lblLeaderboard, 6, 0)
 
         #/////////////////////layout improvement//////////////////////////
 
         layout.setRowStretch(0, 1)
-        layout.setRowStretch(6, 1)
+        layout.setRowStretch(7, 1)
         layout.setRowStretch(2, 1)
         layout.setColumnStretch(0, 1)
         layout.setColumnStretch(4, 1)

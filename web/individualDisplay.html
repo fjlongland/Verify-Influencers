@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verify Influencers</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+        .name-display {
+            font-size: 24px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+        .about {
+            width: 100%;
+            height: 200px;
+            margin-bottom: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            resize: none;
+        }
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+        }
+        .grid-item {
+            display: flex;
+            flex-direction: column;
+        }
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        textarea {
+            width: 100%;
+            height: 100px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            resize: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="name-display" id="nameDisplay"></div>
+        <textarea class="about" id="about" readonly></textarea>
+        <div class="grid">
+            <div class="grid-item">
+                <label for="trustScore">Trust Score:</label>
+                <textarea id="trustScore" readonly></textarea>
+            </div>
+            <div class="grid-item">
+                <label for="yearlyRev">Yearly Revenue:</label>
+                <textarea id="yearlyRev" readonly></textarea>
+            </div>
+            <div class="grid-item">
+                <label for="products">Products:</label>
+                <textarea id="products" readonly></textarea>
+            </div>
+            <div class="grid-item">
+                <label for="followers">Followers:</label>
+                <textarea id="followers" readonly></textarea>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div>
+            <button>
+                back
+            </button>
+        </div>
+    </div>
+    
+
+    <script>
+    </script>
+</body>
+</html>
