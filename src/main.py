@@ -4,11 +4,23 @@ from PyQt5.QtWidgets import QApplication
 from .frontend import MainWindow
 from .calls import basic_call
 from .routers import router
+from fastapi.middleware.cors import CORSMiddleware
 import subprocess
 import uvicorn
 
 api = FastAPI()
+
+api.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"]
+)
+
 api.include_router(router)
+
+
 
 def start_api():
     uvicorn.run("src.main:api", host="127.0.0.1", port=8000, reload=True)
@@ -21,6 +33,7 @@ def start_app():
 
 def main():
 
+    #start_app()
     start_api()
 
 if __name__ == "__main__":

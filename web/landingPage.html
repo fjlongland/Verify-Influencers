@@ -61,14 +61,32 @@
             <label for="influencerName">Influencer Name:</label>
             <input type="text" id="influencerName" name="influencerName">
         </div>
-        <button onclick="searchClicked()">Search</button>
+        <a href="./individualDisplay.html">
+            <button onclick="searchClicked()">Search</button>
+        </a>
+        
     </div>
 
     <script>
         function searchClicked() {
             var name = document.getElementById('influencerName').value;
-            alert('Searching for: ' + name);
-            // Here you would typically send this data to a server or perform further actions
+
+            document.cookie = "cName=" + name + "; path=/";
+
+            const test = getCookie();
+
+            console.log("it worked: "+test)
+        
+        }
+        function getCookie(){
+            const cookieStr = document.cookie;
+            if(cookieStr){
+                const [name, value] = cookieStr.split('=');
+                if (name.trim()==='cName'){
+                    return decodeURIComponent(value);
+                }
+            }
+            return null;
         }
     </script>
 </body>

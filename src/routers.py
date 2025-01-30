@@ -7,7 +7,7 @@ router = APIRouter(prefix="/post",
 
 @router.get("/")
 def test():
-    return{"message": "penis balls"}
+    return{"message": "hello world"}
 
 @router.get("/ai/{name}")
 def run_search(name:str):
