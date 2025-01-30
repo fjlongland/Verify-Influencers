@@ -1,3 +1,4 @@
+import os
 import sys
 from fastapi import FastAPI
 from PyQt5.QtWidgets import QApplication
@@ -23,7 +24,8 @@ api.include_router(router)
 
 
 def start_api():
-    uvicorn.run("src.main:api", host="127.0.0.1", port=8000, reload=True)
+    port = int(os.getenv("PORT", 8000))
+    uvicorn.run("src.main:api", host="0.0.0.0", port=port, reload=True)
 
 def start_app():
     app = QApplication(sys.argv)

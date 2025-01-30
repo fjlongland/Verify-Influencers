@@ -8,7 +8,7 @@ document.addEventListener("DOMContentLoaded", async function(){
 
 async function fetchInfo(name) {
     try{
-        const response = await fetch("http://127.0.0.1:8000/post/ai/"+name, {
+        const response = await fetch("https://your-app-name.up.railway.app/api/"+name, {
             method: 'GET',
         });
         if (!response.ok){
