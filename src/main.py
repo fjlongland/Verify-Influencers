@@ -1,7 +1,7 @@
 import os
 import sys
 from fastapi import FastAPI
-from PyQt5.QtWidgets import QApplication
+#from PyQt5.QtWidgets import QApplication
 from .frontend import MainWindow
 from .calls import basic_call
 from .routers import router
