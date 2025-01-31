@@ -81,23 +81,8 @@
         <textarea name="leaderboard" id="leaderboard">loading</textarea>
     </div>
 
-    <script>
-        function searchClicked() {
-            var name = document.getElementById('influencerName').value;
-            document.cookie = "cName=" + name + "; path=/";
-            const test = getCookie();
-            console.log("it worked: "+test)
-        }
-        function getCookie(){
-            const cookieStr = document.cookie;
-            if(cookieStr){
-                const [name, value] = cookieStr.split('=');
-                if (name.trim()==='cName'){
-                    return decodeURIComponent(value);
-                }
-            }
-            return null;
-        }
+    <script src="indexScripts.js">
+        
     </script>
 </body>
 </html>
