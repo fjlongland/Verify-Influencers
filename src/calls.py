@@ -90,3 +90,58 @@ def about_influencer_call(name):
     answer = response.choices[0].message.content
 
     return answer
+
+
+
+
+
+
+def influencer_leaderboard():
+
+    settings = Settings()
+
+    api_key = settings.api_key
+
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a detailed artificial intelegence and you will try harder to fill in all the information requested"
+            ),
+        },
+        {
+            "role": "user",
+            "content": (
+            """Generate a JSON file containing information on the top 5 health and fitness influencers currently. For each influencer, include:
+            1. Their name
+            2. Their current total online following across all platforms
+            3. A trust score percentage based on a comparison between their most recent health and fitness claims and trusted medical journals
+
+            Present the influencers in order from highest to lowest following. The JSON structure should be as follows:
+
+            {
+                "influencers": [
+                    {       
+                        "name": "",
+                        "totalFollowing": 0,
+                        "trustScore": 0
+                    },
+                    ...
+                ]
+            }
+
+            Ensure all data is up-to-date and accurately reflects current information. Base the trust score on verifiable claims and reputable medical sources. Rank the influencers based on their given trust score."""
+            ),
+        },
+    ]
+
+    client = OpenAI(api_key=api_key, base_url="https://api.perplexity.ai")
+
+    response = client.chat.completions.create(
+        model="sonar-pro",
+        messages=messages
+    )
+
+    answer = response.choices[0].message.content
+
+    return answer
