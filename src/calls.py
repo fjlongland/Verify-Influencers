@@ -130,7 +130,8 @@ def influencer_leaderboard():
                 ]
             }
 
-            Ensure all data is up-to-date and accurately reflects current information. Base the trust score on verifiable claims and reputable medical sources. Rank the influencers based on their given trust score."""
+            Ensure all data is up-to-date and accurately reflects current information. Base the trust score on verifiable claims and reputable medical sources. Rank the influencers based on their given trust score.
+            RETURN ONLY THE JSON FILE!"""
             ),
         },
     ]
