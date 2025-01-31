@@ -13,7 +13,7 @@ async function fetchLeaderboard(){
             throw new Error("HTTP error: status: "+ response.status);
         }
         const data = await response.json();
-        console.log("raw data: ", json.stringify(data));
+        console.log("raw data: ", JSON.stringify(data));
 
     }
     catch(error){
