@@ -42,13 +42,20 @@ function getCookie(){
     return null;
 }
 
-function formatLeaderBoardData(data){
-    const influencers = data.data.influencers;
-    let result = "Name          TrustScore          Followers\n";
-    result += "--------------------------------------------------\n";
+function formatLeaderBoardData(data) {
+    // Check if data has the expected structure
+    if (!data || !data.data || !data.data.influencers || !Array.isArray(data.data.influencers)) {
+        console.error("Unexpected data structure:", data);
+        return "No leaderboard data available";
+    }
 
-    influencers.array.forEach(inf => {
-        result += '${inf.name.padEnd(15)}${inf.trustScore.padEnd(15)}${inf.totalFollowing.toLocaleString().padEnd(12)}\n';
+    const influencers = data.data.influencers;
+    let result = "Name            Trust Score     Followers   \n";
+    result += "----------------------------------------------\n";
+    
+    influencers.forEach(inf => {
+        result += `${inf.name.padEnd(15)} ${inf.trustScore.toString().padEnd(15)} ${inf.totalFollowing.toLocaleString().padEnd(12)}\n`;
     });
+    
     return result;
 }
