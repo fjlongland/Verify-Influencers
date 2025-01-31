@@ -15,6 +15,10 @@ async function fetchLeaderboard(){
         const data = await response.json();
         console.log("raw data: ", JSON.stringify(data));
 
+        leaderboard = formatLeaderBoardData(data);
+
+        console.log(leaderboard);
+
     }
     catch(error){
         console.error("Error fetching leaderboard: ", error);
@@ -36,4 +40,15 @@ function getCookie(){
         }
     }
     return null;
+}
+
+function formatLeaderBoardData(data){
+    const influencers = data.data.influencers;
+    let result = "Name          TrustScore          Followers\n";
+    result += "--------------------------------------------------\n";
+
+    influencers.array.forEach(inf => {
+        result += '${inf.name.padEnd(15)}${inf.trustScore.padEnd(15)}${inf.totalFollowing.toLocaleString().padEnd(12)}\n';
+    });
+    return result;
 }
