@@ -53,7 +53,7 @@ function formatLeaderBoardData(data) {
 
     const influencers = data.data.influencers;
     let result = "Name            Trust Score     Followers   \n";
-    result += "----------------------------------------------\n";
+    result += "------------------------------------------\n";
     
     influencers.forEach(inf => {
         result += `${inf.name.padEnd(15)} ${inf.trustScore.toString().padEnd(15)} ${inf.totalFollowing.toLocaleString().padEnd(12)}\n`;
