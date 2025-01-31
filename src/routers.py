@@ -18,4 +18,5 @@ def run_search(name:str):
 @router.get("/LB")
 def get_leaderboard():
     data = influencer_leaderboard()
-    return {"data": data}
+    jdata = json.loads(data)
+    return {"data": jdata}
