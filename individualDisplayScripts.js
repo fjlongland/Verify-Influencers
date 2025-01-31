@@ -35,6 +35,8 @@ async function fetchInfo(name) {
 
         console.log(formattedClaims)
 
+        document.getElementById("healthClaims").value = formattedClaims;
+
 
     }
     catch(error){
