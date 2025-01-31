@@ -19,6 +19,8 @@ async function fetchLeaderboard(){
 
         console.log(leaderboard);
 
+        document.getElementById("leaderboard").value = leaderboard;
+
     }
     catch(error){
         console.error("Error fetching leaderboard: ", error);
