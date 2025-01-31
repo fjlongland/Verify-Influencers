@@ -146,3 +146,56 @@ def influencer_leaderboard():
     answer = response.choices[0].message.content
 
     return answer
+
+
+def get_claims(name):
+
+    settings = Settings()
+
+    api_key = settings.api_key
+
+    messages = [
+        {
+            "role": "system",
+            "content": (
+                "You are a detailed artificial intelegence and you will try harder to fill in all the information requested"
+            ),
+        },
+        {
+            "role": "user",
+            "content": (
+                        f"""Generate a JSON response about {name}'s 3 most recent health claims using the following structure: {
+                            
+                            "claims": [
+                                {
+                                "Claim": "[Claim x]", 
+                                "brief": "[Brief description of the claim]",
+                                "source":"[Source title and date]",
+                                "claim": "[Detailed description of the claim]",
+                                "medicalEvidence": {
+                                    "source": "[Journal or expert name]",
+                                    "excerpt": "[Relevant excerpt from a medical journal or expert opinion]"
+                                },
+                                "verdict": "[Confirmed or Debunked]"
+                                },
+                                ...
+                                ]
+                            } 
+
+
+                            Ensure that the response includes three of {name}'s most recent health claims, with accurate and up-to-date information. Maintain a neutral, fact-based tone throughout the analysis and avoid duplicate claims.
+                            Return ONLY the json file."""
+           ),
+        },
+    ]
+
+    client = OpenAI(api_key=api_key, base_url="https://api.perplexity.ai")
+
+    response = client.chat.completions.create(
+        model="sonar-pro",
+        messages=messages
+    )
+
+    answer = response.choices[0].message.content
+
+    return answer
