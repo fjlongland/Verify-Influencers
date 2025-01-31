@@ -59,21 +59,32 @@ function getCookie(){
 }
 
 function formatClaims(data) {
-    return data.claims.map((claim, index) => {
-      return `
-  ## Claim ${index + 1}: ${claim.Claim}
-  
-  **Brief**: ${claim.brief}
-  
-  **Source**: ${claim.source}
-  
-  **Claim Details**: ${claim.claim}
-  
-  **Medical Evidence**:
-  - Source: ${claim.medicalEvidence.source}
-  - Excerpt: ${claim.medicalEvidence.excerpt}
-  
-  **Verdict**: ${claim.verdict}
-  `;
-    }).join('\n');
-  }
+    // Check if data has the expected structure
+    if (!data || !data.claims || !data.claims.claims || !Array.isArray(data.claims.claims)) {
+        console.error("Unexpected data structure:", data);
+        return "No claims data available";
+    }
+
+    const claims = data.claims.claims;
+    let result = "";
+
+    claims.forEach((claim, index) => {
+        result += `
+                    ## Claim ${index + 1}: ${claim.Claim}
+
+                    **Brief**: ${claim.brief}
+
+                    **Source**: ${claim.source}
+
+                    **Claim Details**: ${claim.claim}
+
+                    **Medical Evidence**:
+                    - Source: ${claim.medicalEvidence?.source}
+                    - Excerpt: ${claim.medicalEvidence?.excerpt}
+
+                    **Verdict**: ${claim.verdict}
+                `;
+    });
+
+    return result || "No claims data available";
+}
