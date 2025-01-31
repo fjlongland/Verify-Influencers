@@ -72,20 +72,19 @@ function formatClaims(data) {
 
     claims.forEach((claim, index) => {
         result += `
-                    ## Claim ${index + 1}: ${claim.Claim}
+CLAIM: ${index + 1}: ${claim.Claim}
 
-                    **Brief**: ${claim.brief}
+BRIEF: ${claim.brief}
 
-                    **Source**: ${claim.source}
+SOURCE: ${claim.source}
 
-                    **Claim Details**: ${claim.claim}
+CLAIM DETAILS: ${claim.claim}
 
-                    **Medical Evidence**:
-                    - Source: ${claim.medicalEvidence?.source}
-                    - Excerpt: ${claim.medicalEvidence?.excerpt}
+EVIDENCE:
+    - Source: ${claim.medicalEvidence?.source}
+    - Excerpt: ${claim.medicalEvidence?.excerpt}
 
-                    **Verdict**: ${claim.verdict}
-                `;
+VERDICT: ${claim.verdict}`;
     });
 
     return result || "No claims data available";
