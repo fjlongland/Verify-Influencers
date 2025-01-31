@@ -183,7 +183,7 @@ def get_claims(name):
                             }} 
 
 
-                            Ensure that the response includes three of {name}'s most recent health claims, with accurate and up-to-date information. Maintain a neutral, fact-based tone throughout the analysis and avoid duplicate claims.
+                            Ensure that the response includes {name}'s 3 most recent health claims, with accurate and up-to-date information. Maintain a neutral, fact-based tone throughout the analysis and avoid duplicate claims.
                             Return ONLY the json file."""
            ),
         },

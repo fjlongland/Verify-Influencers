@@ -31,6 +31,10 @@ async function fetchInfo(name) {
         document.getElementById("products").value = data.data.products_released.total;
         document.getElementById("followers").value = data.data.online_followers.total;
 
+        const formattedClaims = formatClaims(data)
+
+        console.log(formattedClaims)
+
 
     }
     catch(error){
@@ -53,3 +57,23 @@ function getCookie(){
     }
     return null;
 }
+
+function formatClaims(data) {
+    return data.claims.map((claim, index) => {
+      return `
+  ## Claim ${index + 1}: ${claim.Claim}
+  
+  **Brief**: ${claim.brief}
+  
+  **Source**: ${claim.source}
+  
+  **Claim Details**: ${claim.claim}
+  
+  **Medical Evidence**:
+  - Source: ${claim.medicalEvidence.source}
+  - Excerpt: ${claim.medicalEvidence.excerpt}
+  
+  **Verdict**: ${claim.verdict}
+  `;
+    }).join('\n');
+  }
