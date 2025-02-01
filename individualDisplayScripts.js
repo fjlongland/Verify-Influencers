@@ -84,7 +84,11 @@ EVIDENCE:
     - Source: ${claim.medicalEvidence?.source}
     - Excerpt: ${claim.medicalEvidence?.excerpt}
 
-VERDICT: ${claim.verdict}`;
+VERDICT: ${claim.verdict}
+
+
+
+`;
     });
 
     return result || "No claims data available";
